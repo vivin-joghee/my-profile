@@ -104,16 +104,16 @@ const RESUME = {
   certifications: [
     { name: "SWIFTNet Certification",                     detail: "SWIFT, Singapore \u2022 2025" },
     { name: "Blockchain Security by Infosec",             detail: "LinkedIn, Singapore \u2022 2025", url: "https://www.linkedin.com/learning/certificates/486869b9e46db6d1cc7feb6508082aee9b996249f9a8f98413fe7502a45cd72e?lipi=urn%3Ali%3Apage%3Ad_flagship3_profile_view_base_certifications_details%3Bd2e7OQnYQxSN3rxxJoWBJw%3D%3D&accountId=0&u=0&success=true&authUUID=%2BUj%2FhddnRVOxNKsPEZKJGg%3D%3D" },
-    { name: "Flexi Masters in FinTech",                   detail: "NTU, Singapore \u2022 2024 \u2013 2025" },
-    { name: "Python For Data Analysis",                   detail: "NTU, Singapore \u2022 2024 \u2013 2025" },
-    { name: "Machine Learning in Finance",                detail: "NTU, Singapore \u2022 2024" },
-    { name: "Blockchain Systems Concepts and Principles", detail: "NTU, Singapore \u2022 2024" },
+    { name: "Flexi Masters in FinTech",                   detail: "NTU, Singapore \u2022 2024 \u2013 2025", url: "certs/Vivin_Joghee_FlexiMasters_in_Financial_Technology.pdf" },
+    { name: "Python For Data Analysis",                   detail: "NTU, Singapore \u2022 2024 \u2013 2025", url: "certs/Python_for_Data_Analysis.pdf" },
+    { name: "Machine Learning in Finance",                detail: "NTU, Singapore \u2022 2024", url: "certs/Vivin_Joghee_Machine_Learning_in_Finance.pdf" },
+    { name: "Blockchain Systems Concepts and Principles", detail: "NTU, Singapore \u2022 2024", url: "certs/Vivin_Joghee_Blockchain_Systems.pdf" },
     { name: "Python, PCEP-30-02",                         detail: "Python Institute, Singapore \u2022 2024", url: "https://verify.openedg.org/?id=1sVa.nxUz.GTQ3" },
-    { name: "AWS CLF-C01",                                detail: "Amazon, Singapore \u2022 2023" },
+    { name: "AWS CLF-C01",                                detail: "Amazon, Singapore \u2022 2023", url: "certs/Vivin_Joghee_AWS_Certified_Cloud_Practitioner.pdf" },
     { name: "ICAgile Certified Professional",             detail: "ICAgile, Singapore \u2022 2023", url: "https://www.icagile.com/credentials/ab638407-77e3-469d-97a9-ef83f6ca3ea7" },
     { name: "LPI 010-160",                                detail: "Linux Professional Institute, Singapore \u2022 2023", url: "https://cs.lpi.org/caf/Xamman/certification/verify/LPI000553696/86crxggu3e" },
     { name: "Microsoft Azure AZ900",                      detail: "Microsoft, Chennai \u2022 2021", url: "https://www.credly.com/badges/52779edd-572b-4a5a-8dbb-b84c982d206f?source=linked_in_profile" },
-    { name: "Certified Scrum Master",                     detail: "ScrumAlliance, Chennai \u2022 2017" },
+    { name: "Certified Scrum Master",                     detail: "ScrumAlliance, Chennai \u2022 2017", url: "certs/Vivin_Joghee_Certified_Scrum_Master.pdf" },
   ],
 
   /* ── Awards ── */
