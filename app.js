@@ -181,11 +181,8 @@
       var div = document.createElement("div");
       div.className = "blog-item";
       var h3 = document.createElement("h3");
-      if (b.url) {
-        h3.innerHTML = '<a href="' + b.url + '" target="_blank">' + b.title + "</a>";
-      } else {
-        h3.textContent = b.title;
-      }
+      var blogUrl = b.url || ("blog.html?slug=" + (b.slug || ""));
+      h3.innerHTML = '<a href="' + blogUrl + '">' + b.title + "</a>";
       div.appendChild(h3);
       if (b.date) {
         var dateP = document.createElement("div");
@@ -193,22 +190,11 @@
         dateP.textContent = b.date;
         div.appendChild(dateP);
       }
-      if (b.excerpt) {
-        var excerpt = document.createElement("p");
-        excerpt.className = "blog-excerpt";
-        excerpt.textContent = b.excerpt;
-        div.appendChild(excerpt);
-      }
-      if (b.content && b.content.length > 0) {
-        var contentDiv = document.createElement("div");
-        contentDiv.className = "blog-content";
-        b.content.forEach(function (para) {
-          var p = document.createElement("div");
-          p.className = "blog-paragraph";
-          p.innerHTML = para;
-          contentDiv.appendChild(p);
-        });
-        div.appendChild(contentDiv);
+      if (b.intro) {
+        var intro = document.createElement("p");
+        intro.className = "blog-intro";
+        intro.textContent = b.intro;
+        div.appendChild(intro);
       }
       blogContainer.appendChild(div);
     });

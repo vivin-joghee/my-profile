@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Blog - Vivin Joghee</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Saira+Extra+Condensed:wght@500;700&family=Muli:wght@400;700;800&family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <div class="blog-detail-page">
+    <a href="index.html#blogs" class="blog-back-link"><i class="fas fa-arrow-left"></i> Back to Resume</a>
+    <article id="blog-article">
+      <h1 id="blog-title" class="blog-detail-title"></h1>
+      <div id="blog-date" class="blog-detail-date"></div>
+      <div id="blog-content" class="blog-detail-content"></div>
+    </article>
+  </div>
+
+  <script src="data.js"></script>
+  <script>
+    (function () {
+      var params = new URLSearchParams(window.location.search);
+      var slug = params.get("slug");
+      var blog = null;
+
+      if (slug && RESUME.blogs) {
+        for (var i = 0; i < RESUME.blogs.length; i++) {
+          if (RESUME.blogs[i].slug === slug) {
+            blog = RESUME.blogs[i];
+            break;
+          }
+        }
+      }
+
+      if (!blog) {
+        document.getElementById("blog-article").innerHTML =
+          '<p class="blog-placeholder">Blog post not found.</p>';
+        return;
+      }
+
+      document.title = blog.title + " - Vivin Joghee";
+      document.getElementById("blog-title").textContent = blog.title;
+      document.getElementById("blog-date").textContent = blog.date || "";
+
+      var contentDiv = document.getElementById("blog-content");
+      if (blog.content && blog.content.length > 0) {
+        blog.content.forEach(function (para) {
+          var p = document.createElement("div");
+          p.className = "blog-paragraph";
+          p.innerHTML = para;
+          contentDiv.appendChild(p);
+        });
+      }
+    })();
+  </script>
+</body>
+</html>
