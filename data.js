@@ -185,5 +185,22 @@ const RESUME = {
         '<strong>Report:</strong> <a href="https://www.chainalysis.com/blog/crypto-hacking-stolen-funds-2026/" target="_blank">Chainalysis — Crypto Hacking Stolen Funds 2026</a>',
       ],
     },
+    {
+      title: "When should we stop looking? The Math of Smart Decisions — The \"37% Rule\"",
+      slug: "optimal-stopping",
+      date: "09 November 2025",
+      intro: "The Optimal Stopping Problem reveals that observing 37% before deciding gives you the best mathematical chance of picking the best option — in hiring, investing, or life.",
+      content: [
+        'Imagine interviewing candidates one by one. After each interview, you must decide immediately: hire or move on. Once rejected, you can\'t go back. How do you maximize your chance of hiring the best?',
+        'This is the <strong>Optimal Stopping Problem</strong>.',
+        '<img src="blogs/images/optimal-stopping/algms.png" alt="Optimal Stopping Algorithm">',
+        'Observe the first 37% of candidates to learn what "good" looks like. Then hire the next one who\'s better than all you\'ve seen so far. But first, decide your N.',
+        '<strong>Formula:</strong> P(M, N) = (M \u2013 1)/N \u00d7 [1/(M \u2013 1) + 1/M + \u2026 + 1/(N \u2013 1)]',
+        '<ul><li>N = 10 \u2192 Observe 3 \u2192 P(4, 10) \u2248 0.39 \u2192 <strong>39% chance</strong></li><li>N = 100 \u2192 Observe 37 \u2192 P(37, 100) \u2248 0.36 \u2192 <strong>36% chance</strong></li><li>N = 1000 \u2192 Observe 368 \u2192 P(368, 1000) \u2248 0.367 \u2192 <strong>37% chance</strong></li></ul>',
+        'As N grows, the success rate approaches 1/e \u2248 0.37, the mathematical limit of optimal choice.',
+        'In hiring, investing, or life \u2014 observe first, learn fast and act decisively when the right moment appears. Mathematics reminds us that <strong>too little patience leads to regret</strong>, and <strong>too much patience leads to missed opportunities</strong>.',
+        '<strong>Source:</strong> <a href="https://lnkd.in/gJST-Kwi" target="_blank">Algorithms to Live By</a>',
+      ],
+    },
   ],
 };
