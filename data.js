@@ -170,9 +170,12 @@ const RESUME = {
   blogs: [
     {
       title: "How big are crypto hacks?",
+      slug: "crypto-hacks",
       date: "02 January 2026",
+      intro: "Exploring how money laundering fuels crypto crime, and why billions in stolen funds reveal a systemic problem far bigger than any single hack.",
       content: [
         'In <em>RINSED</em>, Geoff White makes a powerful point. Laundering is not a side activity. It is the hidden system that makes crime profitable. No crime truly succeeds unless the money can be moved, disguised, and used.',
+        '<img src="blogs/images/crypto-hacks/Rinsed.png" alt="Rinsed">',
         'Money laundering typically follows three stages:',
         '<ul><li><strong>Placement</strong> where illicit funds enter the financial system</li><li><strong>Layering</strong> where transactions are layered to obscure the trail</li><li><strong>Integration</strong> where funds re-enter the legitimate economy</li></ul>',
         'In <em>RINSED</em>, money laundering is portrayed as:',
