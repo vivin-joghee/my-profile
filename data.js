@@ -79,16 +79,20 @@ const RESUME = {
 
   /* ── Skills ── */
   skills: [
+    "Machine Learning",
+    "Blockchain",
+    "Python",
     "Ansible",
     "Docker",
     "Cloudbees/Jenkins",
-    "Python",
     "RHEL/ShellScript",
     "Hardware Security Module",
-    "Swift CSP",
-    "Swift API",
     "SAA/AMH",
     "SAG/SNL",
+    "Swift CSP",
+    "Swift API",
+    "Splunk",
+    "Oasis",
     "ISO20022",
   ],
 
@@ -144,12 +148,16 @@ const RESUME = {
   ],
 
   /* ── Books ── */
-  books: [
+  books2026: [
+    { title: "Mastering Ethereum",      author: "Various authors", link: "https://github.com/ethereumbook/ethereumbook" },
+    { title: "The Wisdom We've Lost",   author: "Thomas R. Williams", link: "https://www.ivpress.com/the-wisdom-we-ve-lost" },
+  ],
+
+  books2025: [
     { title: "Rework",                  author: "Founders of 37signals", link: "https://basecamp.com/books/rework" },
     { title: "Empire of AI",            author: "Karen Hao", link: "https://www.penguinrandomhouse.com/books/745735/empire-of-ai-by-karen-hao/" },
     { title: "Inventing Bitcoin",       author: "Yan Pritzker", link: "https://inventingbitcoin.com/" },
     { title: "The Bitcoin Standard",    author: "Saifedean Ammous", link: "https://saifedean.com/thebitcoinstandard/" },
-    { title: "Mastering Ethereum",      author: "Various authors", link: "https://github.com/ethereumbook/ethereumbook" },
     { title: "Read, Write, Own",        author: "Chris Dixon", link: "https://readwriteown.com/" },
     { title: "Rinsed",                  author: "Geoff White", link: "https://www.geoffwhite.media/rinsed" },
     { title: "Outliers",                author: "Malcolm Gladwell", link: "https://www.gladwellbooks.com/titles/malcolm-gladwell/outliers/9780316017930/" },
@@ -158,12 +166,9 @@ const RESUME = {
     { title: "Same as Ever",            author: "Morgan Housel", link: "https://www.morganhousel.com/sameasever" },
     { title: "Clear Thinking",          author: "Shane Parrish", link: "https://fs.blog/clear-thinking/" },
     { title: "Win Every Argument",      author: "Mehdi Hasan", link: "https://mehdirhasan.com/win-every-argument/" },
-    { title: "The Wisdom We've Lost",   author: "Thomas R. Williams", link: "https://www.ivpress.com/the-wisdom-we-ve-lost" },
     { title: "The Anthology of Balaji", author: "Balaji Srinivasan", link: "https://balajis.com/anthology/" },
     { title: "Think and Grow Rich",     author: "Napoleon Hill", link: "https://napoleonhill.org/books/think-and-grow-rich/" },
     { title: "When Breath Becomes Air", author: "Paul Kalanithi", link: "https://www.whenbreathbecomesair.com/" },
-
-
   ],
 
   /* ── Blogs ── */

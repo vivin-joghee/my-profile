@@ -76,21 +76,25 @@
 
   /* ── EDUCATION ── */
   var eduContainer = document.getElementById("education-list");
+  var eduTable = document.createElement("table");
+  eduTable.className = "education-table";
   R.education.forEach(function (e) {
-    var div = document.createElement("div");
-    div.className = "resume-item";
-    var content = document.createElement("div");
-    content.className = "resume-item-content";
-    var h3 = document.createElement("h3");
-    h3.textContent = e.name;
-    content.appendChild(h3);
-    var sub = document.createElement("div");
-    sub.className = "item-subtitle";
-    sub.textContent = e.detail;
-    content.appendChild(sub);
-    div.appendChild(content);
-    eduContainer.appendChild(div);
+    var tr = document.createElement("tr");
+    var tdIcon = document.createElement("td");
+    tdIcon.className = "edu-icon";
+    tdIcon.innerHTML = '<i class="fas fa-graduation-cap"></i>';
+    var tdName = document.createElement("td");
+    tdName.className = "edu-name";
+    tdName.textContent = e.name;
+    var tdDetail = document.createElement("td");
+    tdDetail.className = "edu-detail";
+    tdDetail.textContent = e.detail;
+    tr.appendChild(tdIcon);
+    tr.appendChild(tdName);
+    tr.appendChild(tdDetail);
+    eduTable.appendChild(tr);
   });
+  eduContainer.appendChild(eduTable);
 
   /* ── SKILLS ── */
   var skillsContainer = document.getElementById("skills-list");
@@ -110,8 +114,12 @@
   skillsDiv.appendChild(tagList);
   skillsContainer.appendChild(skillsDiv);
 
-  /* ── CERTIFICATIONS ── */
+  /* ── CERTIFICATIONS (inside Skills) ── */
+  var certHeading = document.createElement("h3");
+  certHeading.className = "skills-category-heading";
+  certHeading.textContent = "Certifications";
   var certContainer = document.getElementById("certifications-list");
+  certContainer.parentNode.insertBefore(certHeading, certContainer);
   R.certifications.forEach(function (c) {
     var li = document.createElement("li");
     var nameHtml = c.url
@@ -123,15 +131,6 @@
     certContainer.appendChild(li);
   });
 
-  /* ── AWARDS ── */
-  var awardContainer = document.getElementById("awards-list");
-  R.awards.forEach(function (a) {
-    var li = document.createElement("li");
-    li.innerHTML =
-      '<span class="fa-li"><i class="fas fa-trophy"></i></span>' +
-      "<strong>" + a.name + "</strong> &mdash; " + a.detail;
-    awardContainer.appendChild(li);
-  });
 
   /* ── VOLUNTEER ── */
   var volContainer = document.getElementById("volunteer-list");
@@ -162,17 +161,21 @@
   }
 
   /* ── BOOKS ── */
-  var bookContainer = document.getElementById("books-list");
-  R.books.forEach(function (b) {
-    var li = document.createElement("li");
-    var titleHtml = b.link
-      ? '<a href="' + b.link + '" target="_blank" rel="noopener"><strong>' + b.title + '</strong> <i class="fas fa-external-link-alt" style="font-size:0.75em"></i></a>'
-      : '<strong>' + b.title + '</strong>';
-    li.innerHTML =
-      '<span class="fa-li"><i class="fas fa-book"></i></span>' +
-      titleHtml + " &mdash; " + b.author;
-    bookContainer.appendChild(li);
-  });
+  function renderBooks(list, containerId) {
+    var container = document.getElementById(containerId);
+    list.forEach(function (b) {
+      var li = document.createElement("li");
+      var titleHtml = b.link
+        ? '<a href="' + b.link + '" target="_blank" rel="noopener"><strong>' + b.title + '</strong> <i class="fas fa-external-link-alt" style="font-size:0.75em"></i></a>'
+        : '<strong>' + b.title + '</strong>';
+      li.innerHTML =
+        '<span class="fa-li"><i class="fas fa-book"></i></span>' +
+        titleHtml + " &mdash; " + b.author;
+      container.appendChild(li);
+    });
+  }
+  renderBooks(R.books2026, "books-2026-list");
+  renderBooks(R.books2025, "books-2025-list");
 
   /* ── BLOGS ── */
   var blogContainer = document.getElementById("blogs-list");

@@ -200,6 +200,47 @@ a:hover { color: var(--primary-dark); }
   color: var(--white);
 }
 
+/* ── EDUCATION TABLE (inside About) ── */
+.education-table {
+  margin-top: 2rem;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+.education-table tr {
+  border-bottom: 1px solid #dee2e6;
+}
+
+.education-table tr:last-child {
+  border-bottom: none;
+}
+
+.education-table td {
+  padding: 0.6rem 1rem 0.6rem 0;
+  vertical-align: middle;
+}
+
+.edu-icon {
+  width: 2rem;
+  color: var(--primary);
+  font-size: 1.1rem;
+}
+
+.edu-name {
+  font-family: 'Saira Extra Condensed', 'Open Sans', serif;
+  font-size: 1.15rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: var(--dark);
+  white-space: nowrap;
+}
+
+.edu-detail {
+  font-size: 0.95rem;
+  color: var(--gray);
+  text-align: right;
+}
+
 /* ── EXPERIENCE & EDUCATION ITEMS ── */
 .resume-item {
   display: flex;
@@ -256,13 +297,18 @@ a:hover { color: var(--primary-dark); }
   margin-bottom: 1.5rem;
 }
 
-.skills-category h3 {
+.skills-category h3,
+.skills-category-heading {
   font-family: 'Saira Extra Condensed', 'Open Sans', serif;
   font-size: 1.25rem;
   font-weight: 500;
   text-transform: uppercase;
   color: var(--dark);
   margin-bottom: 0.75rem;
+}
+
+.skills-category-heading {
+  margin-top: 2rem;
 }
 
 .skills-icons {
