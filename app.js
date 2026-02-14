@@ -180,6 +180,9 @@
   /* ── BLOGS ── */
   var blogContainer = document.getElementById("blogs-list");
   if (R.blogs && R.blogs.length > 0) {
+    R.blogs.sort(function (a, b) {
+      return new Date(b.date) - new Date(a.date);
+    });
     R.blogs.forEach(function (b) {
       var div = document.createElement("div");
       div.className = "blog-item";

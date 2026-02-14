@@ -176,7 +176,7 @@ const RESUME = {
     {
       title: "What is Money?",
       slug: "money",
-      date: "14 February 2026",
+      date: "14 September 2025",
       intro: "Money\u2019s evolution is a fascinating journey, often spanning centuries. Understanding its four key phases helps us contextualize modern digital assets like Bitcoin.",
       content: [
         'Money\u2019s evolution is a fascinating journey, often spanning centuries. Understanding its four key phases, as outlined by economist William Stanley Jevons, helps us contextualize modern digital assets like Bitcoin.',
@@ -190,7 +190,7 @@ const RESUME = {
     {
       title: "What is Web3?",
       slug: "web3",
-      date: "14 February 2026",
+      date: "28 September 2025",
       intro: "From read, to read-write, to read-write-own \u2014 the internet\u2019s evolution in three eras.",
       content: [
         '<img src="blogs/images/web3/read-write-own.png" alt="Read Write Own">',
@@ -204,7 +204,7 @@ const RESUME = {
     {
       title: "What is Gartner\u2019s Hype Cycle?",
       slug: "gartners-hype-cycle",
-      date: "14 February 2026",
+      date: "27 October 2025",
       intro: "And where does Crypto sit today?",
       content: [
         'The Gartner Hype Cycle describes the journey every emerging technology goes through. It highlights not just the buzz, but also the reality check that follows before meaningful adoption kicks in.',
@@ -217,7 +217,7 @@ const RESUME = {
     {
       title: "Why can\u2019t we print more money?",
       slug: "sound-money",
-      date: "14 February 2026",
+      date: "26 October 2025",
       intro: "The story of Yap\u2019s Rai stones and what it teaches us about sound money.",
       content: [
         'In the remote Pacific Ocean lies a small island called Yap. For centuries, the people of Yap used massive limestone disks (Rai stones) as money. Some of these stones stood over 4 meters tall and weighed several tons. To transfer a stone, the community would gather and agree on who now owned it (decentralization).',
@@ -232,7 +232,7 @@ const RESUME = {
     {
       title: "What is Artificial General Intelligence (AGI)?",
       slug: "agi",
-      date: "12 February 2026",
+      date: "16 November 2025",
       intro: "Is Compute the only way to attain AGI?",
       content: [
         'OpenAI has described AGI as "a highly autonomous system that outperforms humans at most economically valuable work," one that will somehow "elevate humanity by increasing abundance, turbocharging the economy, and aiding in the discovery of new scientific knowledge that changes the limits of possibility."',
@@ -245,7 +245,7 @@ const RESUME = {
     {
       title: "What is the Byzantine Generals Problem?",
       slug: "byzantine-generals-problem",
-      date: "12 February 2026",
+      date: "19 October 2025",
       intro: "Why it is difficult to control the blockchain network?",
       content: [
         'The Byzantine Empire was infamous for its complex bureaucracy, shifting alliances, and constant intrigue. A general there feared not just the enemy beyond the walls but betrayal within. Orders could be forged, messengers bribed, and allies turn traitor.',
@@ -260,7 +260,7 @@ const RESUME = {
     {
       title: "What is a Birthday Attack?",
       slug: "birthday-attack",
-      date: "12 February 2026",
+      date: "12 October 2025",
       intro: "Bitcoin is back at an all-time high — a good time to revisit the cryptography that keeps it secure: SHA-256.",
       content: [
         'The birthday attack comes from the birthday paradox: in a group of just 23 people, there\'s a 50% chance two share the same birthday. The same math applies to hash functions in which probability of two inputs producing the same hash (a collision) rises much faster than our intuition expects.',
