@@ -174,6 +174,62 @@ const RESUME = {
   /* ── Blogs ── */
   blogs: [
     {
+      title: "What is Money?",
+      slug: "money",
+      date: "14 February 2026",
+      intro: "Money\u2019s evolution is a fascinating journey, often spanning centuries. Understanding its four key phases helps us contextualize modern digital assets like Bitcoin.",
+      content: [
+        'Money\u2019s evolution is a fascinating journey, often spanning centuries. Understanding its four key phases, as outlined by economist William Stanley Jevons, helps us contextualize modern digital assets like Bitcoin.',
+        '<img src="blogs/images/money/bullish-case-for-bitcoin.png" alt="The Bullish Case for Bitcoin">',
+        'Here are the four stages money typically evolves through:',
+        '<ul><li><strong>1. Collectible \ud83d\udc1a</strong> \u2014 Initially, money is valued for its unique, peculiar properties like rarity or symbolic significance. Think shells, beads, or early gold. These served as \u201cproto-money\u201d for storing and transferring wealth between generations and tribes.</li><li><strong>2. Store of Value \ud83d\udcb0</strong> \u2014 As enough people recognize these properties, an item becomes a reliable way to keep and store value over time, with its purchasing power rising and eventually stabilizing. Historically, gold served this role. Bitcoin is currently transitioning from the collectible stage to becoming a store of value.</li><li><strong>3. Medium of Exchange \ud83d\udcb5</strong> \u2014 Once firmly established and stabilized as a store of value, the opportunity cost of using it for trades decreases, making it suitable for widespread transactions. Early Bitcoin users often misunderstood this, incurring a \u201chuge opportunity cost\u201d by using it as a medium of exchange too soon (e.g., the famous pizza transaction).</li><li><strong>4. Unit of Account \ud83c\udff7\ufe0f</strong> \u2014 This final stage is reached when money is widely accepted as a medium of exchange, and goods and services are priced directly in its terms, rather than being translated from another currency.</li></ul>',
+        'This journey is complex, with gold taking centuries. Bitcoin\u2019s real-time evolution offers a rare glimpse into this fundamental monetary process.',
+        '<strong>Source:</strong> <a href="https://www.bullishcaseforbitcoin.com/" target="_blank">The Bullish Case for Bitcoin</a>',
+      ],
+    },
+    {
+      title: "What is Web3?",
+      slug: "web3",
+      date: "14 February 2026",
+      intro: "From read, to read-write, to read-write-own \u2014 the internet\u2019s evolution in three eras.",
+      content: [
+        '<img src="blogs/images/web3/read-write-own.png" alt="Read Write Own">',
+        '<strong>web1 \u2013 read era (1990 to 2005):</strong> Early internet protocol networks democratized information. Anyone could type a few words into a web browser and read about almost any topic through a website.',
+        '<strong>web2 \u2013 read-write era (2006 to 2020):</strong> Corporate networks democratized publishing. Anyone could write and publish to mass audiences through posts on social networks and other services.',
+        '<strong>web3 \u2013 read-write-own era:</strong> Represents a natural synthesis of the two prior types, and it is democratizing ownership. In this era, anyone can become a network stakeholder, gaining power and economic upside.',
+        'People can read and write on the internet, but they can also own now.',
+        '<strong>Source:</strong> <a href="https://readwriteown.com/" target="_blank">Read Write Own</a>',
+      ],
+    },
+    {
+      title: "What is Gartner\u2019s Hype Cycle?",
+      slug: "gartners-hype-cycle",
+      date: "14 February 2026",
+      intro: "And where does Crypto sit today?",
+      content: [
+        'The Gartner Hype Cycle describes the journey every emerging technology goes through. It highlights not just the buzz, but also the reality check that follows before meaningful adoption kicks in.',
+        '<img src="blogs/images/gartners-hype-cycle/hype-cycle.png" alt="Gartner Hype Cycle">',
+        'The five phases:',
+        '<ul><li><strong>\ud83d\udd39 Innovation Trigger</strong> \u2014 A breakthrough sparks excitement. Proof-of-concept stories grab attention, but usable products are scarce.</li><li><strong>\ud83d\udd39 Peak of Inflated Expectations</strong> \u2014 Media hype fuels big promises. Success stories emerge, but failures are just as common.</li><li><strong>\ud83d\udd39 Trough of Disillusionment</strong> \u2014 Reality sets in. Interest fades as early implementations disappoint. Only the resilient players survive.</li><li><strong>\ud83d\udd39 Slope of Enlightenment</strong> \u2014 Practical applications become clearer. Second- and third-generation solutions show real value.</li><li><strong>\ud83d\udd39 Plateau of Productivity</strong> \u2014 Adoption goes mainstream. Clear standards and proven use cases drive lasting impact.</li></ul>',
+        '<strong>Source:</strong> <a href="https://www.gartner.com/en/research/methodologies/gartner-hype-cycle" target="_blank">Gartner Hype Cycle</a>',
+      ],
+    },
+    {
+      title: "Why can\u2019t we print more money?",
+      slug: "sound-money",
+      date: "14 February 2026",
+      intro: "The story of Yap\u2019s Rai stones and what it teaches us about sound money.",
+      content: [
+        'In the remote Pacific Ocean lies a small island called Yap. For centuries, the people of Yap used massive limestone disks (Rai stones) as money. Some of these stones stood over 4 meters tall and weighed several tons. To transfer a stone, the community would gather and agree on who now owned it (decentralization).',
+        '<img src="blogs/images/sound-money/sound-money.png" alt="Sound Money">',
+        'The stones had to be quarried on distant islands and transported back using dugout canoes \u2014 a laborious and costly process. As a result, the annual increase in supply was extremely low (scarcity).',
+        'In 1903, an American trader named O\u2019Keefe arrived with dynamite and steamships. He began mass-producing the stones using industrial tools, increasing the annual supply by 300 times.',
+        'The stock-flow-ratio plummeted, and the thousand-year-old trust system exploded, where Rai stones went from being a \u201cpublic ledger\u201d to little more than worthless rocks.',
+        'This episode teaches us something profound: the credibility of a currency doesn\u2019t come from how it looks, but from how hard it is to create.',
+        '<strong>Source:</strong> <a href="https://saifedean.com/tbs" target="_blank">The Bitcoin Standard</a>',
+      ],
+    },
+    {
       title: "What is Artificial General Intelligence (AGI)?",
       slug: "agi",
       date: "12 February 2026",
