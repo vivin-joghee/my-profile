@@ -19,7 +19,7 @@ const RESUME = {
 
   /* ── Objective ── */
   objective:
-    "Swift Messaging, Data Analysis, and Automation specialist with 13 years of banking experience delivering, operating, and optimizing Swift and Java platforms across on-premises and Azure environments. Currently serving as Continuous Integration Lead for Global Professional Services, with a mandate to enhance service delivery productivity through AI-driven automation and analytics. Pursuing an MSc in Financial Technology, strengthening expertise in data analysis, machine learning, and blockchain systems to support next-generation financial services.",
+    "Swift Messaging and Cross-Border Payments specialist with 13 years of banking experience delivering large-scale payment transformation programs across global markets. Proven track record in leading ISO 20022 migrations, managing complex stakeholder landscapes across banks and regulators, and translating regulatory, operational, and client requirements into scalable, resilient payment solutions. Currently serving as Continuous Integration Lead for Global Professional Services, driving strategic initiatives that enhance infrastructure reliability, security compliance, and customer value.\nAlongside industry leadership, I am pursuing a Master of Science in Financial Technology at Nanyang Technological University (NTU), strengthening my expertise in digital finance, machine learning, and blockchain systems to bridge traditional financial infrastructure with emerging fintech innovation.",
 
   /* ── Experience ── */
   experience: [

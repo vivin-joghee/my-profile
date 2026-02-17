@@ -43,7 +43,11 @@
   document.getElementById("contact-line").innerHTML = contactParts.join(" &middot; ");
 
   /* ── OBJECTIVE ── */
-  document.getElementById("objective").textContent = R.objective;
+  var objEl = document.getElementById("objective");
+  R.objective.split('\n').forEach(function (para, i) {
+    if (i > 0) objEl.appendChild(document.createElement("br"));
+    objEl.appendChild(document.createTextNode(para));
+  });
 
   /* ── EXPERIENCE ── */
   var expContainer = document.getElementById("experience-list");
