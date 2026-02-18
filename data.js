@@ -19,7 +19,13 @@ const RESUME = {
 
   /* ── Objective ── */
   objective:
-    "Swift Messaging and Cross-Border Payments specialist with 13 years of banking experience delivering large-scale payment transformation programs across global markets. Proven track record in leading ISO 20022 migrations, managing complex stakeholder landscapes across banks and regulators, and translating regulatory, operational, and client requirements into scalable, resilient payment solutions. Currently serving as Continuous Integration Lead for Global Professional Services, driving strategic initiatives that enhance infrastructure reliability, security compliance, and customer value.\nAlongside industry leadership, I am pursuing a Master of Science in Financial Technology at Nanyang Technological University (NTU), strengthening my expertise in digital finance, machine learning, and blockchain systems to bridge traditional financial infrastructure with emerging fintech innovation.",
+    "Swift Messaging and Cross-Border Payments specialist with 13 years of banking experience delivering large-scale payment transformation programs across global markets. Proven track record in leading ISO 20022 migrations, managing complex stakeholder landscapes across banks and regulators, and translating regulatory, operational, and client requirements into scalable, resilient payment solutions. Currently at SWIFT, with responsibilities spanning consulting, delivery, and Continuous Integration leadership for Global Professional Services, driving strategic initiatives that enhance infrastructure reliability, security compliance, and customer value.\nAlongside industry leadership, I am pursuing a Master of Science in Financial Technology at Nanyang Technological University (NTU), strengthening my expertise in digital finance, machine learning, and blockchain systems to bridge traditional financial infrastructure with emerging fintech innovation.",
+
+  /* ── Memberships ── */
+  memberships: [
+    "Singapore Fintech Association",
+    "Singapore Computer Society",
+  ],
 
   /* ── Experience ── */
   experience: [
@@ -273,7 +279,7 @@ const RESUME = {
       title: "What is the holy grail of cryptography?",
       slug: "fhe",
       date: "16 February 2026",
-      intro: "<strong>Fully Homomorphic Encryption (FHE)</strong> allows computations on encrypted data without ever decrypting it — data stays protected end to end.",
+      intro: "Fully Homomorphic Encryption (FHE) allows computations on encrypted data without ever decrypting it — data stays protected end to end.",
       content: [
         'In today\u2019s data driven world, organizations collect and analyze vast amounts of sensitive information. The challenge is simple but profound: how do we extract value from data without exposing it. This is where <strong>Fully Homomorphic Encryption (FHE)</strong> quietly changes the rules of the game.',
         'FHE is a revolutionary cryptographic technique that allows computations to be performed directly on encrypted data without ever decrypting it. Data stays protected end to end even while it is being processed.',

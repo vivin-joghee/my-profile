@@ -176,6 +176,18 @@ a:hover { color: var(--primary-dark); }
   margin-bottom: 2rem;
 }
 
+/* ── MEMBERSHIPS ── */
+.memberships {
+  margin-top: 1.5rem;
+  font-size: 0.95rem;
+  color: var(--gray);
+}
+
+.membership-label {
+  font-weight: 700;
+  color: var(--dark);
+}
+
 /* ── SOCIAL ICONS ── */
 .social-icons {
   display: flex;

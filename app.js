@@ -49,6 +49,19 @@
     objEl.appendChild(document.createTextNode(para));
   });
 
+  /* ── MEMBERSHIPS ── */
+  if (R.memberships && R.memberships.length > 0) {
+    var memContainer = document.getElementById("memberships-list");
+    var memDiv = document.createElement("div");
+    memDiv.className = "memberships";
+    var memLabel = document.createElement("span");
+    memLabel.className = "membership-label";
+    memLabel.textContent = "Member of: ";
+    memDiv.appendChild(memLabel);
+    memDiv.appendChild(document.createTextNode(R.memberships.join(" | ")));
+    memContainer.appendChild(memDiv);
+  }
+
   /* ── EXPERIENCE ── */
   var expContainer = document.getElementById("experience-list");
   R.experience.forEach(function (job) {
