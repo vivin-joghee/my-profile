@@ -338,6 +338,7 @@ const RESUME = {
         'Through the use of zero-knowledge proofs, Tornado Cash shows how advanced cryptography can allow private transactions while still maintaining the integrity of the blockchain.',
         'However, the same technology can also be misused by malicious actors attempting to hide illicit funds.',
         'As blockchain technology continues to evolve, regulators, developers, and users will need to find a balance between privacy, accountability, and security in decentralized financial systems.',
+        '<strong>Disclaimer:</strong> This blog post is for educational and informational purposes only. It does not endorse, promote, or encourage the use of Tornado Cash or any similar privacy tools for illegal activities. Tornado Cash has been sanctioned by the U.S. Treasury Department (OFAC), and interacting with the protocol may violate applicable laws and regulations. Readers are advised to comply with all relevant laws in their jurisdiction.',
       ],
     },
     {
