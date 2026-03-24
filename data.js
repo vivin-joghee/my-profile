@@ -7,7 +7,7 @@ const RESUME = {
 
   /* ── Personal ── */
   name: "Vivin Joghee",
-  title: "Swift Messaging | Data Analysis | Automation",
+  title: "Senior Financial Technology Consultant | Technical Lead \u2013 Payments & Swift Infrastructure",
   contact: [
     // Add your contact details below. Types: "email", "phone", "linkedin", "github", "location"
     { type: "email",    value: "vivinjoghee@gmail.com" },
@@ -19,66 +19,66 @@ const RESUME = {
 
   /* ── Objective ── */
   objective:
-    "Swift Messaging and Cross-Border Payments specialist with 13 years of banking experience delivering large-scale payment transformation programs across global markets. Proven track record in leading ISO 20022 migrations, managing complex stakeholder landscapes across banks and regulators, and translating regulatory, operational, and client requirements into scalable, resilient payment solutions. Currently at SWIFT, with responsibilities spanning consulting, delivery, and Continuous Integration leadership for Global Professional Services, driving strategic initiatives that enhance infrastructure reliability, security compliance, and customer value.\nAlongside industry leadership, I am pursuing a Master of Science in Financial Technology at Nanyang Technological University (NTU), strengthening my expertise in digital finance, machine learning, and blockchain systems to bridge traditional financial infrastructure with emerging fintech innovation.",
+    "Results-driven Senior Financial Technology professional with 13+ years of experience architecting and delivering enterprise-scale Swift messaging, cross-border payment, and financial infrastructure solutions for Tier-1 banks and market infrastructures across APAC, EMEA, and the Americas. Currently serving as Continuous Integration Lead at Swift (Global Professional Services) and pursuing an MSc in Financial Technology at NTU Singapore.\nProven track record in leading ISO 20022 migration programmes across 10+ global market infrastructures, executing zero-downtime data centre migrations for Swift infrastructure, deploying AI-driven automation, and managing cloud-native deployments on Azure. Combines deep technical expertise in Swift, Python, and DevOps toolchains with strong leadership capabilities and a growing command of blockchain, machine learning, and FinTech innovation.",
 
   /* ── Memberships ── */
   memberships: [
-    "Singapore Fintech Association",
-    "Singapore Computer Society",
+    "Singapore Fintech Association (SFA)",
+    "Singapore Computer Society (SCS)",
+    "Blockchain Association of Singapore (BAS)",
   ],
 
   /* ── Experience ── */
   experience: [
     {
       role: "Senior Financial Services Industry Consultant",
-      company: "SWIFT Terminal Services",
-      date: "April 2022 \u2013 Present",
+      company: "Swift Terminal Services, Singapore",
+      date: "December 2021 \u2013 Present",
       bullets: [
-        "Developed data visualization dashboards and analytical charts using Python and machine-learning techniques to derive insights from customer and operational data.",
-        "Led ISO 20022 migration initiatives for global payment systems, including MEPS L4L, TH Bahtnet, HK CHATS, UK CHAPS, ZA SAMOS, CBPR+, AU HVPS, PH PhilPaSS, JO RTGS, BN RTGS, for various Banks.",
-        "Designed and implemented a Copilot AI agent to optimize and streamline Professional Services workflows, leveraging JIRA REST APIs to extract ticket data and automatically consolidate project documentation.",
-        "Managed AMH migrations for clients, delivering custom transformations to support back-office integrations and evolving workflow requirements.",
-        "Served as Development Lead for Continuous Integration, managing AMH Docker image maintenance, server provisioning via Ansible, and CI/CD pipeline configuration using CloudBees/Jenkins.",
-        "Managed regulatory and governance requirements, including secure password policies, identity usage controls, and monitoring tool compliance across environments.",
+        "Lead Continuous Integration function for Global Professional Services, governing AMH Docker image lifecycle, server provisioning via Ansible, and CI/CD pipeline configuration using CloudBees/Jenkins, improving release velocity and reducing deployment errors across the team.",
+        "Spearheaded ISO 20022 migration programmes for 10+ global market infrastructures, including MEPS L4L (Singapore), TH Bahtnet, HK CHATS, UK CHAPS, ZA SAMOS, CBPR+, AU HVPS, PH PhilPaSS, JO RTGS, BN RTGS, and ISO Accelerated Packs for smaller Market Infrastructures.",
+        "Designed and deployed an AI Copilot agent (leveraging JIRA REST APIs) to automate Professional Services workflow management and consolidate technical documentation.",
+        "Architected and delivered complex Swift messaging integrations for global clients, including custom transformation configurations to support back-office payment and settlement workflows.",
+        "Developed Python-based data visualization dashboards and machine-learning models to surface operational insights from customer data, directly informing product and service decisions.",
+        "Managed regulatory governance requirements across environments: secure password policies, identity usage controls, and monitoring tool compliance.",
       ],
     },
     {
       role: "Technical Lead \u2013 Enterprise Financial Messaging",
-      company: "BNY Mellon Technology",
+      company: "BNY Mellon Technology, Singapore",
       date: "December 2019 \u2013 December 2021",
       bullets: [
-        "Automated installation and configuration of SWIFT applications using Ansible.",
-        "Developed Python scripts to streamline deployment of configurations.",
-        "Swift Go \u2013 Microgateway installation and API configuration for SLVP, GPI, G4C, and GCase APIs.",
-        "Integrated SWIFT APIs with Banking Analytics platforms using REST APIs.",
-        "Deployed and configured SWIFT applications in Azure cloud environments (SAA, AWP, SAG, SNL, IPLA).",
-        "Swift Customer Security Framework 2020 Implementation.",
+        "Led enterprise-wide deployment and configuration of Swift applications (SAA, AWP, SAG, SNL, IPLA) on Azure cloud infrastructure, driving BNY Mellon\u2019s cloud-first migration strategy for its messaging platform.",
+        "Architected and delivered Swift Go Microgateway integration, enabling API connectivity for SLVP, GPI, G4C, and GCase use cases.",
+        "Developed Ansible automation playbooks to standardise Swift application installation, integration, and configuration, cutting provisioning time significantly across environments.",
+        "Wrote Python scripts for deployment automation and operational tooling, increasing consistency and reducing manual configuration risk.",
+        "Implemented Swift Customer Security Framework (CSCF) 2020, ensuring full compliance across the enterprise Swift estate.",
+        "Received Passion for Excellence award in recognition of outstanding delivery and innovation impact.",
       ],
     },
     {
-      role: "Lead Business Analyst \u2013 Global Swift Messaging",
-      company: "Standard Chartered Global Business Services",
+      role: "Lead Analyst \u2013 Global Swift Messaging",
+      company: "Standard Chartered GBS, Singapore",
       date: "January 2015 \u2013 December 2019",
       bullets: [
-        "Developed Python scripts to automate deployment of configurations.",
-        "Led migration from IBM TDE to Axway, enabling Cross File Transfer integration with SWIFT for SCB FileAct traffic.",
-        "Executed migration from SAG FTI/FTA module to AMH for SCB FileAct traffic.",
-        "Swift Customer Security Framework 2018/2019 Implementation.",
-        "Swift Standard Release 2017\u20132019 Implementation.",
-        "Managed SWIFTNet 7.2 and 7.3 migrations (SAA, AWP, SAG, SNL, IPLA).",
-        "HSM migration from 6.0 to 6.1.",
+        "Led data centre migration for Swift applications, overseeing the physical and logical relocation of Swift infrastructure (SAA, AWP, SAG, SNL, HSM) with zero-downtime cutover, ensuring continuity of critical cross-border payment operations.",
+        "Led end-to-end Swift infrastructure operations and upgrade programmes across a global footprint, managing SWIFTNet 7.2 and 7.3 migrations (SAA, AWP, SAG, SNL, IPLA) for one of Asia\u2019s largest banks.",
+        "Executed migration from legacy Swift SAG FTI/FTA module to AMH, modernising FileAct processing and aligning with Swift\u2019s strategic roadmap.",
+        "Delivered Swift Customer Security Framework (CSCF) 2018 and 2019 implementations and Swift Standard Release upgrades (2017\u20132019), maintaining full regulatory compliance.",
+        "Led Hardware Security Module (HSM) upgrade from v6.0 to v6.1 across production environments.",
+        "Recognised as Value Champion for consistent high-impact delivery across a 5-year tenure.",
       ],
     },
     {
-      role: "Software Engineer \u2013 Belk Application Maintenance",
-      company: "Syntel Inc",
+      role: "Software Engineer \u2013 Application Maintenance",
+      company: "Syntel Inc, Chennai / Singapore",
       date: "December 2012 \u2013 December 2014",
       bullets: [
-        "Belk.com website maintenance and support.",
-        "Configured critical alerts in CA Wily and Splunk across application servers to ensure proactive monitoring.",
-        "Queried and generated business intelligence reports using IBM Cognos.",
-        "Performed patch installations for the critical Blue Martini Java application.",
-        "Developed and implemented Shell scripts to automate BAU (Business-as-Usual) tasks.",
+        "Maintained and supported Belk.com\u2019s Java-based e-commerce platform (Blue Martini), performing patch installations and performance tuning.",
+        "Configured proactive monitoring alerts in CA Wily and Splunk across application servers, reducing mean-time-to-detect for critical incidents.",
+        "Developed Shell scripts to automate BAU operational tasks, increasing team efficiency.",
+        "Generated business intelligence reports using IBM Cognos to support stakeholder decision-making.",
+        "Awarded Winning Streak for exceptional performance in first year of career.",
       ],
     },
   ],
@@ -112,7 +112,7 @@ const RESUME = {
   // Add a "url" field to any certification to make it clickable for verification.
   // Example: { name: "AWS CLF-C01", detail: "Amazon ...", url: "https://verify-link.com" }
   certifications: [
-    { name: "SWIFTNet Certification",                     detail: "SWIFT, Singapore \u2022 2025" },
+    { name: "SWIFTNet Certification",                     detail: "SWIFT, Singapore \u2022 2026" },
     { name: "Blockchain Security by Infosec",             detail: "LinkedIn, Singapore \u2022 2025", url: "https://www.linkedin.com/learning/certificates/486869b9e46db6d1cc7feb6508082aee9b996249f9a8f98413fe7502a45cd72e?lipi=urn%3Ali%3Apage%3Ad_flagship3_profile_view_base_certifications_details%3Bd2e7OQnYQxSN3rxxJoWBJw%3D%3D&accountId=0&u=0&success=true&authUUID=%2BUj%2FhddnRVOxNKsPEZKJGg%3D%3D" },
     { name: "Flexi Masters in FinTech",                   detail: "NTU, Singapore \u2022 2024 \u2013 2025", url: "certs/Vivin_Joghee_FlexiMasters_in_Financial_Technology.pdf" },
     { name: "Python For Data Analysis",                   detail: "NTU, Singapore \u2022 2024 \u2013 2025", url: "certs/Python_for_Data_Analysis.pdf" },
