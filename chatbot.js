@@ -2,7 +2,7 @@
 
 (function () {
   var R = RESUME;
-  var API_URL = "http://localhost:5000/chat";
+  var API_URL = "https://profile-chatbot.vivinjoghee.workers.dev/chat";
   var sessionId = "s_" + Date.now() + "_" + Math.random().toString(36).substr(2, 6);
   var useAI = true; // Will auto-fallback to keyword mode if API is unavailable
 
