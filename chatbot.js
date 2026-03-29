@@ -8,10 +8,22 @@
 
   /* ── DOM Construction ── */
   var btn = document.createElement("button");
-  btn.className = "chatbot-btn";
+  btn.className = "chatbot-btn chatbot-btn-pulse";
   btn.setAttribute("aria-label", "Chat with me");
   btn.innerHTML = '<i class="fas fa-comment-dots"></i>';
   document.body.appendChild(btn);
+
+  /* ── Tooltip "Ask my AI" ── */
+  var tooltip = document.createElement("div");
+  tooltip.className = "chatbot-tooltip";
+  tooltip.textContent = "Ask my AI anything \u2728";
+  document.body.appendChild(tooltip);
+
+  // Remove tooltip and pulse after animations complete
+  setTimeout(function () {
+    if (tooltip.parentNode) tooltip.parentNode.removeChild(tooltip);
+    btn.classList.remove("chatbot-btn-pulse");
+  }, 7000);
 
   var win = document.createElement("div");
   win.className = "chatbot-window";
@@ -51,22 +63,40 @@
     .then(function (res) { useAI = res.ok; updateModeBadge(); })
     .catch(function () { useAI = false; updateModeBadge(); });
 
-  btn.addEventListener("click", function () {
-    isOpen = !isOpen;
-    win.classList.toggle("open", isOpen);
-    btn.classList.toggle("active", isOpen);
-    if (isOpen && !greeted) {
+  function openChat() {
+    isOpen = true;
+    win.classList.add("open");
+    btn.classList.add("active");
+    if (!greeted) {
       greeted = true;
       addBotMessage("Hi! I'm Vivin's AI profile assistant. Feel free to ask me anything about his career, skills, certifications, education, blogs, or interests!");
     }
-    if (isOpen) inputEl.focus();
-  });
+    inputEl.focus();
+    // Dismiss tooltip early if still visible
+    if (tooltip.parentNode) tooltip.parentNode.removeChild(tooltip);
+    btn.classList.remove("chatbot-btn-pulse");
+  }
 
-  closeBtn.addEventListener("click", function () {
+  function closeChat() {
     isOpen = false;
     win.classList.remove("open");
     btn.classList.remove("active");
+  }
+
+  btn.addEventListener("click", function () {
+    if (isOpen) closeChat();
+    else openChat();
   });
+
+  /* ── Hero "Ask My AI" button ── */
+  var heroAiBtn = document.getElementById("hero-ai-btn");
+  if (heroAiBtn) {
+    heroAiBtn.addEventListener("click", function () {
+      openChat();
+    });
+  }
+
+  closeBtn.addEventListener("click", closeChat);
 
   sendBtn.addEventListener("click", sendMessage);
   inputEl.addEventListener("keydown", function (e) {

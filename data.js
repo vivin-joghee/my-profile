@@ -85,6 +85,8 @@ const RESUME = {
 
   /* ── Skills ── */
   skills: [
+    "Artificial Intelligence",
+    "Claude API",
     "Machine Learning",
     "Blockchain",
     "Python",
@@ -95,11 +97,12 @@ const RESUME = {
     "Hardware Security Module",
     "SAA/AMH",
     "SAG/SNL",
-    "Swift CSP",
+    "Swift CSP / CSCF",
     "Swift API",
     "Splunk",
     "Oasis",
     "ISO20022",
+    "Swift Translator",
   ],
 
   /* ── Education ── */

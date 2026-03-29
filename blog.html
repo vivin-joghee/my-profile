@@ -14,11 +14,25 @@
   <title>Blog - Vivin Joghee</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Saira+Extra+Condensed:wght@500;700&family=Muli:wght@400;700;800&family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
+
+  <!-- TOP NAVBAR -->
+  <nav id="navbar" class="scrolled">
+    <div class="nav-container">
+      <a href="index.html#hero" class="nav-logo">Vivin<span class="text-accent">.</span></a>
+      <ul class="nav-links">
+        <li><a href="index.html#about">About</a></li>
+        <li><a href="index.html#experience">Experience</a></li>
+        <li><a href="index.html#skills">Skills</a></li>
+        <li><a href="index.html#blogs" class="active">Blogs</a></li>
+      </ul>
+      <a href="index.html#about" class="nav-cta">Get In Touch</a>
+    </div>
+  </nav>
 
   <div class="blog-detail-page">
     <a href="index.html#blogs" class="blog-back-link"><i class="fas fa-arrow-left"></i> Back to Profile</a>
@@ -32,37 +46,257 @@
   <script src="data.js"></script>
   <script>
     (function () {
+      var CMS_API = 'http://localhost:3000/api/posts';
       var params = new URLSearchParams(window.location.search);
-      var slug = params.get("slug");
-      var blog = null;
+      var cmsId = params.get('id');
+      // Read slug from hash (e.g. blog.html#money) or query param as fallback
+      var slug = window.location.hash ? window.location.hash.substring(1) : params.get('slug');
 
-      if (slug && RESUME.blogs) {
-        for (var i = 0; i < RESUME.blogs.length; i++) {
-          if (RESUME.blogs[i].slug === slug) {
-            blog = RESUME.blogs[i];
-            break;
-          }
+      // If CMS id is present, fetch from CMS
+      if (cmsId) {
+        fetchFromCMS(cmsId);
+      } else if (slug) {
+        // Try local data.js first, then CMS
+        if (!renderLocalPost(slug)) {
+          fetchFromCMSBySlug(slug);
+        }
+      } else {
+        showNotFound();
+      }
+
+      function fetchFromCMS(id) {
+        fetch(CMS_API + '/' + id + '?depth=1')
+          .then(function (res) {
+            if (!res.ok) throw new Error('Not found');
+            return res.json();
+          })
+          .then(function (post) {
+            renderCMSPost(post);
+          })
+          .catch(function () {
+            showNotFound();
+          });
+      }
+
+      function fetchFromCMSBySlug(slug) {
+        fetch(CMS_API + '?where[slug][equals]=' + encodeURIComponent(slug) + '&depth=1&limit=1')
+          .then(function (res) {
+            if (!res.ok) throw new Error('CMS unavailable');
+            return res.json();
+          })
+          .then(function (data) {
+            if (data.docs && data.docs.length > 0) {
+              renderCMSPost(data.docs[0]);
+            } else {
+              // Fallback to data.js
+              renderLocalPost(slug);
+            }
+          })
+          .catch(function () {
+            // Fallback to data.js
+            renderLocalPost(slug);
+          });
+      }
+
+      function renderCMSPost(post) {
+        document.title = post.title + ' - Vivin Joghee';
+        document.getElementById('blog-title').textContent = post.title;
+        document.getElementById('blog-date').textContent = formatDate(post.publishedAt);
+
+        var contentDiv = document.getElementById('blog-content');
+
+        // Render hero image if present
+        if (post.heroImage && post.heroImage.url) {
+          var img = document.createElement('div');
+          img.className = 'blog-paragraph';
+          img.innerHTML = '<img src="' + getCMSMediaUrl(post.heroImage.url) + '" alt="' + (post.heroImage.alt || post.title) + '">';
+          contentDiv.appendChild(img);
+        }
+
+        // Render Lexical content
+        if (post.content && post.content.root) {
+          var html = renderLexicalNode(post.content.root);
+          var wrapper = document.createElement('div');
+          wrapper.innerHTML = html;
+          // Wrap each top-level element in blog-paragraph div
+          var children = Array.from(wrapper.children);
+          children.forEach(function (child) {
+            var p = document.createElement('div');
+            p.className = 'blog-paragraph';
+            p.appendChild(child);
+            contentDiv.appendChild(p);
+          });
         }
       }
 
-      if (!blog) {
-        document.getElementById("blog-article").innerHTML =
-          '<p class="blog-placeholder">Blog post not found.</p>';
-        return;
+      function renderLocalPost(slug) {
+        var blog = null;
+        if (slug && RESUME.blogs) {
+          for (var i = 0; i < RESUME.blogs.length; i++) {
+            if (RESUME.blogs[i].slug === slug) {
+              blog = RESUME.blogs[i];
+              break;
+            }
+          }
+        }
+
+        if (!blog) return false;
+
+        document.title = blog.title + ' - Vivin Joghee';
+        document.getElementById('blog-title').textContent = blog.title;
+        document.getElementById('blog-date').textContent = blog.date || '';
+
+        var contentDiv = document.getElementById('blog-content');
+        if (blog.content && blog.content.length > 0) {
+          blog.content.forEach(function (para) {
+            var p = document.createElement('div');
+            p.className = 'blog-paragraph';
+            p.innerHTML = para;
+            contentDiv.appendChild(p);
+          });
+        }
+        return true;
       }
 
-      document.title = blog.title + " - Vivin Joghee";
-      document.getElementById("blog-title").textContent = blog.title;
-      document.getElementById("blog-date").textContent = blog.date || "";
+      function showNotFound() {
+        document.getElementById('blog-article').innerHTML =
+          '<p style="color:var(--gray);font-style:italic;">Blog post not found.</p>';
+      }
 
-      var contentDiv = document.getElementById("blog-content");
-      if (blog.content && blog.content.length > 0) {
-        blog.content.forEach(function (para) {
-          var p = document.createElement("div");
-          p.className = "blog-paragraph";
-          p.innerHTML = para;
-          contentDiv.appendChild(p);
-        });
+      function formatDate(dateStr) {
+        if (!dateStr) return '';
+        var d = new Date(dateStr);
+        return d.toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric' });
+      }
+
+      function getCMSMediaUrl(url) {
+        // If relative URL, prepend CMS base
+        if (url && url.startsWith('/')) {
+          return 'http://localhost:3000' + url;
+        }
+        return url;
+      }
+
+      /* ── Lexical JSON to HTML renderer ── */
+      function renderLexicalNode(node) {
+        if (!node) return '';
+
+        // Text node
+        if (node.type === 'text') {
+          var text = escapeHtml(node.text || '');
+          if (node.format) {
+            if (node.format & 1) text = '<strong>' + text + '</strong>'; // bold
+            if (node.format & 2) text = '<em>' + text + '</em>';         // italic
+            if (node.format & 8) text = '<u>' + text + '</u>';           // underline
+            if (node.format & 4) text = '<s>' + text + '</s>';           // strikethrough
+            if (node.format & 16) text = '<code>' + text + '</code>';    // code
+          }
+          return text;
+        }
+
+        // Linebreak
+        if (node.type === 'linebreak') return '<br>';
+
+        // Tab
+        if (node.type === 'tab') return '&emsp;';
+
+        // Link
+        if (node.type === 'link' || node.type === 'autolink') {
+          var href = '';
+          var target = '_blank';
+          var rel = 'noopener';
+          if (node.fields) {
+            href = node.fields.url || '';
+            if (node.fields.newTab === false) target = '_self';
+          }
+          var children = renderChildren(node);
+          return '<a href="' + escapeHtml(href) + '" target="' + target + '" rel="' + rel + '">' + children + '</a>';
+        }
+
+        // Block-level nodes
+        var children = renderChildren(node);
+
+        switch (node.type) {
+          case 'root':
+            return children;
+
+          case 'paragraph':
+            if (!children.trim()) return '';
+            return '<p>' + children + '</p>';
+
+          case 'heading':
+            var tag = node.tag || 'h2';
+            return '<' + tag + '>' + children + '</' + tag + '>';
+
+          case 'list':
+            var listTag = node.listType === 'number' ? 'ol' : 'ul';
+            return '<' + listTag + '>' + children + '</' + listTag + '>';
+
+          case 'listitem':
+            return '<li>' + children + '</li>';
+
+          case 'quote':
+            return '<blockquote>' + children + '</blockquote>';
+
+          case 'horizontalrule':
+            return '<hr>';
+
+          case 'upload':
+            // Media block
+            if (node.value && node.value.url) {
+              var imgUrl = getCMSMediaUrl(node.value.url);
+              var alt = node.value.alt || '';
+              return '<img src="' + escapeHtml(imgUrl) + '" alt="' + escapeHtml(alt) + '">';
+            }
+            return '';
+
+          case 'block':
+            return renderBlock(node);
+
+          default:
+            return children || '';
+        }
+      }
+
+      function renderChildren(node) {
+        if (!node.children || node.children.length === 0) return '';
+        return node.children.map(renderLexicalNode).join('');
+      }
+
+      function renderBlock(node) {
+        if (!node.fields) return '';
+        var blockType = node.fields.blockType;
+
+        if (blockType === 'banner') {
+          var style = node.fields.style || 'info';
+          var content = node.fields.content;
+          var html = content ? renderLexicalNode(content) : '';
+          return '<div class="blog-banner blog-banner-' + style + '">' + html + '</div>';
+        }
+
+        if (blockType === 'code') {
+          var code = escapeHtml(node.fields.code || '');
+          var lang = node.fields.language || '';
+          return '<pre><code class="language-' + lang + '">' + code + '</code></pre>';
+        }
+
+        if (blockType === 'mediaBlock') {
+          var media = node.fields.media;
+          if (media && media.url) {
+            var imgUrl = getCMSMediaUrl(media.url);
+            return '<img src="' + escapeHtml(imgUrl) + '" alt="' + escapeHtml(media.alt || '') + '">';
+          }
+        }
+
+        return '';
+      }
+
+      function escapeHtml(str) {
+        return str
+          .replace(/&/g, '&amp;')
+          .replace(/</g, '&lt;')
+          .replace(/>/g, '&gt;')
+          .replace(/"/g, '&quot;');
       }
     })();
   </script>
