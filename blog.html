@@ -46,7 +46,7 @@
   <script src="data.js"></script>
   <script>
     (function () {
-      var CMS_API = 'http://localhost:3000/api/posts';
+      var CMS_API = 'https://my-profile-cms-fxxs.vercel.app/api/posts';
       var params = new URLSearchParams(window.location.search);
       var cmsId = params.get('id');
       // Read slug from hash (e.g. blog.html#money) or query param as fallback
@@ -172,7 +172,7 @@
       function getCMSMediaUrl(url) {
         // If relative URL, prepend CMS base
         if (url && url.startsWith('/')) {
-          return 'http://localhost:3000' + url;
+          return 'https://my-profile-cms-fxxs.vercel.app' + url;
         }
         return url;
       }

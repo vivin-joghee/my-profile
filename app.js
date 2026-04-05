@@ -218,7 +218,7 @@
 
   /* ── BLOGS — fetch from CMS, fallback to data.js ── */
   var blogContainer = document.getElementById('blogs-list');
-  var CMS_API = 'http://localhost:3000/api/posts';
+  var CMS_API = 'https://my-profile-cms-fxxs.vercel.app/api/posts';
 
   function renderBlogCards(blogs) {
     blogContainer.innerHTML = '';
