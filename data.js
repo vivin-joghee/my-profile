@@ -158,8 +158,10 @@ const RESUME = {
 
   /* ── Books ── */
   books2026: [
-    { title: "Mastering Ethereum",      author: "Various authors", link: "https://github.com/ethereumbook/ethereumbook" },
-    { title: "The Wisdom We've Lost",   author: "Thomas R. Williams", link: "https://www.ivpress.com/the-wisdom-we-ve-lost" },
+    { title: "Mastering Ethereum",          author: "Various authors", link: "https://github.com/ethereumbook/ethereumbook" },
+    { title: "The Wisdom We've Lost",       author: "Thomas R. Williams", link: "https://www.ivpress.com/the-wisdom-we-ve-lost" },
+    { title: "Everything is Tuberculosis",  author: "John Green", link: "https://www.johngreenbooks.com/everything-is-tuberculosis" },
+    { title: "Never Split the Difference",  author: "Chris Voss", link: "https://www.harpercollins.ca/9780062471253/never-split-the-difference/" },
   ],
 
   books2025: [
