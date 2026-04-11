@@ -74,10 +74,8 @@ const RESUME = {
       company: "Syntel Inc, Chennai / Singapore",
       date: "December 2012 \u2013 December 2014",
       bullets: [
-        "Maintained and supported Belk.com\u2019s Java-based e-commerce platform (Blue Martini), performing patch installations and performance tuning.",
-        "Configured proactive monitoring alerts in CA Wily and Splunk across application servers, reducing mean-time-to-detect for critical incidents.",
-        "Developed Shell scripts to automate BAU operational tasks, increasing team efficiency.",
-        "Generated business intelligence reports using IBM Cognos to support stakeholder decision-making.",
+        "Maintained and tuned Belk.com\u2019s Java-based Blue Martini e-commerce platform, executing patch deployments, JVM/heap tuning, and root-cause analysis to ensure platform stability under high transaction loads.",
+        "Engineered observability and automation pipelines using CA Wily, Splunk, and Shell scripts to instrument application servers, trigger threshold-based alerts, and automate recurring BAU operations, reducing mean-time-to-detect and operational overhead.",
         "Awarded Winning Streak for exceptional performance in first year of career.",
       ],
     },
