@@ -247,7 +247,18 @@
     return d.toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric' });
   }
 
-  // Try CMS first, then fallback to data.js
+  function mapLocalBlogs() {
+    return (R.blogs || []).map(function (b) {
+      return { title: b.title, slug: b.slug, date: b.date, intro: b.intro || '' };
+    });
+  }
+
+  // Render local blogs immediately so the section is never empty
+  var localBlogsSorted = mapLocalBlogs();
+  localBlogsSorted.sort(function (a, b) { return new Date(b.date) - new Date(a.date); });
+  renderBlogCards(localBlogsSorted);
+
+  // Then fetch CMS posts and merge them in once available
   fetch(CMS_API + '?where[_status][equals]=published&sort=-publishedAt&limit=50&depth=0')
     .then(function (res) {
       if (!res.ok) throw new Error('CMS unavailable');
@@ -265,28 +276,19 @@
         };
       });
 
-      // Merge: CMS posts first, then data.js posts (deduplicated by slug)
       var cmsSlugSet = {};
       cmsPosts.forEach(function (p) { cmsSlugSet[p.slug] = true; });
 
-      var localPosts = (R.blogs || [])
-        .filter(function (b) { return !cmsSlugSet[b.slug]; })
-        .map(function (b) {
-          return { title: b.title, slug: b.slug, date: b.date, intro: b.intro || '' };
-        });
+      var localPosts = mapLocalBlogs().filter(function (b) {
+        return !cmsSlugSet[b.slug];
+      });
 
       var allPosts = cmsPosts.concat(localPosts);
       allPosts.sort(function (a, b) { return new Date(b.date) - new Date(a.date); });
       renderBlogCards(allPosts);
     })
     .catch(function (err) {
-      console.log('[Blog CMS] Fetch failed, using data.js fallback:', err.message);
-      var localBlogs = (R.blogs || []).slice();
-      localBlogs.sort(function (a, b) { return new Date(b.date) - new Date(a.date); });
-      var mapped = localBlogs.map(function (b) {
-        return { title: b.title, slug: b.slug, date: b.date, intro: b.intro || '' };
-      });
-      renderBlogCards(mapped);
+      console.log('[Blog CMS] Fetch failed, keeping local blogs:', err.message);
     });
 
   /* ── NAVBAR — scroll effect & scroll spy ── */
