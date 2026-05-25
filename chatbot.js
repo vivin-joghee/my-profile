@@ -33,6 +33,10 @@
       '<button class="chatbot-close" aria-label="Close chat"><i class="fas fa-times"></i></button>' +
     '</div>' +
     '<div class="chatbot-messages" id="chatbot-messages"></div>' +
+    '<div class="chatbot-suggestions" aria-label="Suggested questions">' +
+      '<button type="button" class="chatbot-suggestion">Ask about his AI and Claude API work</button>' +
+      '<button type="button" class="chatbot-suggestion">Ask about his fintech and banking background</button>' +
+    '</div>' +
     '<div class="chatbot-input-area">' +
       '<input type="text" class="chatbot-input" id="chatbot-input" placeholder="Type a question..." autocomplete="off">' +
       '<button class="chatbot-send" id="chatbot-send" aria-label="Send"><i class="fas fa-paper-plane"></i></button>' +
@@ -99,6 +103,13 @@
   closeBtn.addEventListener("click", closeChat);
 
   sendBtn.addEventListener("click", sendMessage);
+  win.querySelectorAll(".chatbot-suggestion").forEach(function (suggestion) {
+    suggestion.addEventListener("click", function () {
+      inputEl.value = suggestion.textContent;
+      sendMessage();
+    });
+  });
+
   inputEl.addEventListener("keydown", function (e) {
     if (e.key === "Enter") sendMessage();
   });

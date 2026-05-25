@@ -1391,6 +1391,33 @@ a:hover { color: var(--accent-dark); }
   color: var(--dark);
 }
 
+.chatbot-suggestions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  padding: 0.85rem 1rem;
+  border-top: 1px solid var(--border);
+  background: rgba(244, 247, 248, 0.72);
+}
+
+.chatbot-suggestion {
+  padding: 0.45rem 0.65rem;
+  border: 1px solid rgba(15, 118, 110, 0.16);
+  border-radius: 999px;
+  background: #fff;
+  color: var(--accent-dark);
+  font-size: 0.76rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all var(--transition);
+}
+
+.chatbot-suggestion:hover {
+  border-color: var(--accent-light);
+  background: linear-gradient(135deg, rgba(45, 212, 191, 0.12), rgba(37, 99, 235, 0.08));
+  transform: translateY(-1px);
+}
+
 .chatbot-input-area {
   display: flex;
   border-top: 1px solid var(--border);
