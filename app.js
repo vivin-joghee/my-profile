@@ -9,6 +9,18 @@
     nameParts[0] + ' <span class="accent-text">' + nameParts.slice(1).join(' ') + '</span>';
   document.getElementById('hero-title').textContent = R.title;
 
+  var proofContainer = document.getElementById('hero-proof');
+  if (proofContainer && R.proofPoints) {
+    R.proofPoints.forEach(function (p) {
+      var item = document.createElement('div');
+      item.className = 'proof-item';
+      item.innerHTML =
+        '<strong>' + p.value + '</strong>' +
+        '<span>' + p.label + '</span>';
+      proofContainer.appendChild(item);
+    });
+  }
+
   /* ── HERO SOCIAL ── */
   var heroSocial = document.getElementById('hero-social');
   var iconMap = {
@@ -50,6 +62,25 @@
       tag.className = 'membership-tag';
       tag.textContent = m;
       memContainer.appendChild(tag);
+    });
+  }
+
+  /* ── EXPERTISE ── */
+  var expertiseContainer = document.getElementById('expertise-list');
+  if (expertiseContainer && R.expertise) {
+    R.expertise.forEach(function (item) {
+      var card = document.createElement('article');
+      card.className = 'expertise-card';
+      var tagsHtml = '';
+      item.signals.forEach(function (s) {
+        tagsHtml += '<span>' + s + '</span>';
+      });
+      card.innerHTML =
+        '<div class="expertise-icon"><i class="' + item.icon + '"></i></div>' +
+        '<h3>' + item.area + '</h3>' +
+        '<p>' + item.summary + '</p>' +
+        '<div class="expertise-tags">' + tagsHtml + '</div>';
+      expertiseContainer.appendChild(card);
     });
   }
 
@@ -219,6 +250,7 @@
   /* ── BLOGS — fetch from CMS, fallback to data.js ── */
   var blogContainer = document.getElementById('blogs-list');
   var CMS_API = 'https://my-profile-cms-fxxs.vercel.app/api/posts';
+  var CMS_CACHE_KEY = 'vivin-cms-posts-v1';
 
   function renderBlogCards(blogs) {
     blogContainer.innerHTML = '';
@@ -247,45 +279,85 @@
     return d.toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric' });
   }
 
+  function parseBlogDate(dateStr) {
+    if (!dateStr) return 0;
+    var parsed = Date.parse(dateStr);
+    return Number.isNaN(parsed) ? 0 : parsed;
+  }
+
   function mapLocalBlogs() {
     return (R.blogs || []).map(function (b) {
       return { title: b.title, slug: b.slug, date: b.date, intro: b.intro || '' };
     });
   }
 
+  function mapCMSPosts(posts) {
+    return (posts || []).map(function (p) {
+      return {
+        title: p.title,
+        slug: p.slug,
+        date: formatDate(p.publishedAt),
+        intro: p.intro || (p.meta && p.meta.description) || '',
+        cmsId: p.id,
+      };
+    });
+  }
+
+  function readCachedCMSPosts() {
+    try {
+      var cached = JSON.parse(localStorage.getItem(CMS_CACHE_KEY) || 'null');
+      return cached && Array.isArray(cached.posts) ? cached.posts : [];
+    } catch (err) {
+      return [];
+    }
+  }
+
+  function writeCachedCMSPosts(posts) {
+    try {
+      localStorage.setItem(CMS_CACHE_KEY, JSON.stringify({
+        savedAt: Date.now(),
+        posts: posts || [],
+      }));
+    } catch (err) {
+      // Cache is an optimization only. Ignore quota/private-mode failures.
+    }
+  }
+
+  function mergeAndRenderBlogs(cmsDocs) {
+    var cmsPosts = mapCMSPosts(cmsDocs);
+    var cmsSlugSet = {};
+    cmsPosts.forEach(function (p) { cmsSlugSet[p.slug] = true; });
+
+    var localPosts = mapLocalBlogs().filter(function (b) {
+      return !cmsSlugSet[b.slug];
+    });
+
+    var allPosts = cmsPosts.concat(localPosts);
+    allPosts.sort(function (a, b) { return parseBlogDate(b.date) - parseBlogDate(a.date); });
+    renderBlogCards(allPosts);
+  }
+
   // Render local blogs immediately so the section is never empty
   var localBlogsSorted = mapLocalBlogs();
-  localBlogsSorted.sort(function (a, b) { return new Date(b.date) - new Date(a.date); });
+  localBlogsSorted.sort(function (a, b) { return parseBlogDate(b.date) - parseBlogDate(a.date); });
   renderBlogCards(localBlogsSorted);
 
+  // If CMS posts were fetched before, render them immediately from browser cache
+  var cachedCMSPosts = readCachedCMSPosts();
+  if (cachedCMSPosts.length > 0) {
+    mergeAndRenderBlogs(cachedCMSPosts);
+  }
+
   // Then fetch CMS posts and merge them in once available
-  fetch(CMS_API + '?where[_status][equals]=published&sort=-publishedAt&limit=50&depth=0')
+  fetch(CMS_API + '?where[_status][equals]=published&sort=-publishedAt&limit=50&depth=1')
     .then(function (res) {
       if (!res.ok) throw new Error('CMS unavailable');
       return res.json();
     })
     .then(function (data) {
       console.log('[Blog CMS] Fetched', data.totalDocs, 'posts from CMS');
-      var cmsPosts = (data.docs || []).map(function (p) {
-        return {
-          title: p.title,
-          slug: p.slug,
-          date: formatDate(p.publishedAt),
-          intro: p.intro || (p.meta && p.meta.description) || '',
-          cmsId: p.id,
-        };
-      });
-
-      var cmsSlugSet = {};
-      cmsPosts.forEach(function (p) { cmsSlugSet[p.slug] = true; });
-
-      var localPosts = mapLocalBlogs().filter(function (b) {
-        return !cmsSlugSet[b.slug];
-      });
-
-      var allPosts = cmsPosts.concat(localPosts);
-      allPosts.sort(function (a, b) { return new Date(b.date) - new Date(a.date); });
-      renderBlogCards(allPosts);
+      writeCachedCMSPosts(data.docs || []);
+      mergeAndRenderBlogs(data.docs || []);
     })
     .catch(function (err) {
       console.log('[Blog CMS] Fetch failed, keeping local blogs:', err.message);

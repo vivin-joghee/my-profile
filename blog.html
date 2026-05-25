@@ -47,6 +47,7 @@
   <script>
     (function () {
       var CMS_API = 'https://my-profile-cms-fxxs.vercel.app/api/posts';
+      var CMS_CACHE_KEY = 'vivin-cms-posts-v1';
       var params = new URLSearchParams(window.location.search);
       var cmsId = params.get('id');
       // Read slug from hash (e.g. blog.html#money) or query param as fallback
@@ -54,31 +55,44 @@
 
       // If CMS id is present, fetch from CMS
       if (cmsId) {
-        fetchFromCMS(cmsId);
+        var cachedPost = findCachedCMSPost({ id: cmsId });
+        if (cachedPost) {
+          renderCMSPost(cachedPost);
+          fetchFromCMS(cmsId, true);
+        } else {
+          fetchFromCMS(cmsId, false);
+        }
       } else if (slug) {
         // Try local data.js first, then CMS
         if (!renderLocalPost(slug)) {
-          fetchFromCMSBySlug(slug);
+          var cachedSlugPost = findCachedCMSPost({ slug: slug });
+          if (cachedSlugPost) {
+            renderCMSPost(cachedSlugPost);
+            fetchFromCMSBySlug(slug, true);
+          } else {
+            fetchFromCMSBySlug(slug, false);
+          }
         }
       } else {
         showNotFound();
       }
 
-      function fetchFromCMS(id) {
+      function fetchFromCMS(id, silent) {
         fetch(CMS_API + '/' + id + '?depth=1')
           .then(function (res) {
             if (!res.ok) throw new Error('Not found');
             return res.json();
           })
           .then(function (post) {
+            upsertCachedCMSPost(post);
             renderCMSPost(post);
           })
           .catch(function () {
-            showNotFound();
+            if (!silent) showNotFound();
           });
       }
 
-      function fetchFromCMSBySlug(slug) {
+      function fetchFromCMSBySlug(slug, silent) {
         fetch(CMS_API + '?where[slug][equals]=' + encodeURIComponent(slug) + '&depth=1&limit=1')
           .then(function (res) {
             if (!res.ok) throw new Error('CMS unavailable');
@@ -86,16 +100,62 @@
           })
           .then(function (data) {
             if (data.docs && data.docs.length > 0) {
+              upsertCachedCMSPost(data.docs[0]);
               renderCMSPost(data.docs[0]);
             } else {
               // Fallback to data.js
-              renderLocalPost(slug);
+              if (!silent) renderLocalPost(slug);
             }
           })
           .catch(function () {
             // Fallback to data.js
-            renderLocalPost(slug);
+            if (!silent) renderLocalPost(slug);
           });
+      }
+
+      function readCachedCMSPosts() {
+        try {
+          var cached = JSON.parse(localStorage.getItem(CMS_CACHE_KEY) || 'null');
+          return cached && Array.isArray(cached.posts) ? cached.posts : [];
+        } catch (err) {
+          return [];
+        }
+      }
+
+      function writeCachedCMSPosts(posts) {
+        try {
+          localStorage.setItem(CMS_CACHE_KEY, JSON.stringify({
+            savedAt: Date.now(),
+            posts: posts || [],
+          }));
+        } catch (err) {
+          // Cache is best-effort only.
+        }
+      }
+
+      function findCachedCMSPost(query) {
+        var posts = readCachedCMSPosts();
+        for (var i = 0; i < posts.length; i++) {
+          if ((query.id && posts[i].id === query.id) || (query.slug && posts[i].slug === query.slug)) {
+            return posts[i];
+          }
+        }
+        return null;
+      }
+
+      function upsertCachedCMSPost(post) {
+        if (!post || !post.id) return;
+        var posts = readCachedCMSPosts();
+        var replaced = false;
+        for (var i = 0; i < posts.length; i++) {
+          if (posts[i].id === post.id) {
+            posts[i] = post;
+            replaced = true;
+            break;
+          }
+        }
+        if (!replaced) posts.unshift(post);
+        writeCachedCMSPosts(posts);
       }
 
       function renderCMSPost(post) {
@@ -104,6 +164,7 @@
         document.getElementById('blog-date').textContent = formatDate(post.publishedAt);
 
         var contentDiv = document.getElementById('blog-content');
+        contentDiv.innerHTML = '';
 
         // Render hero image if present
         if (post.heroImage && post.heroImage.url) {
@@ -147,6 +208,7 @@
         document.getElementById('blog-date').textContent = blog.date || '';
 
         var contentDiv = document.getElementById('blog-content');
+        contentDiv.innerHTML = '';
         if (blog.content && blog.content.length > 0) {
           blog.content.forEach(function (para) {
             var p = document.createElement('div');
