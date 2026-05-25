@@ -252,6 +252,28 @@
   var CMS_API = 'https://my-profile-cms-fxxs.vercel.app/api/posts';
   var CMS_CACHE_KEY = 'vivin-cms-posts-v1';
 
+  function getBlogTags(blog) {
+    var source = ((blog.title || '') + ' ' + (blog.intro || '') + ' ' + (blog.slug || '')).toLowerCase();
+    var tagRules = [
+      { tag: 'AI', terms: ['ai', 'claude', 'agent', 'model', 'machine learning', 'agi'] },
+      { tag: 'Banking', terms: ['bank', 'payment', 'swift', 'iso 20022', 'transaction'] },
+      { tag: 'Privacy', terms: ['privacy', 'zero knowledge', 'zkp', 'tornado', 'fhe', 'homomorphic'] },
+      { tag: 'Security', terms: ['security', 'cryptography', 'hash', 'birthday attack', 'byzantine'] },
+      { tag: 'Blockchain', terms: ['blockchain', 'bitcoin', 'ethereum', 'web3', 'crypto'] },
+      { tag: 'Money', terms: ['money', 'sound money', 'store of value'] },
+      { tag: 'FinTech', terms: ['fintech', 'finance', 'financial'] },
+      { tag: 'Decision Science', terms: ['optimal', 'stopping', 'algorithm'] },
+      { tag: 'CMS', terms: ['payload', 'cms', 'hooks'] },
+    ];
+    var tags = [];
+    tagRules.forEach(function (rule) {
+      if (tags.length >= 4) return;
+      var matched = rule.terms.some(function (term) { return source.indexOf(term) !== -1; });
+      if (matched) tags.push(rule.tag);
+    });
+    return tags.length ? tags : ['Insight'];
+  }
+
   function renderBlogCards(blogs) {
     blogContainer.innerHTML = '';
     if (!blogs || blogs.length === 0) {
@@ -264,9 +286,13 @@
       var blogUrl = b.cmsId
         ? ('blog.html?id=' + b.cmsId)
         : ('blog.html#' + (b.slug || ''));
+      var tagsHtml = getBlogTags(b).map(function (tag) {
+        return '<span class="blog-tag">' + tag + '</span>';
+      }).join('');
       card.innerHTML =
         '<div class="blog-card-date">' + (b.date || '') + '</div>' +
         '<div class="blog-card-title"><a href="' + blogUrl + '">' + b.title + '</a></div>' +
+        '<div class="blog-card-tags">' + tagsHtml + '</div>' +
         '<p class="blog-card-intro">' + (b.intro || '') + '</p>' +
         '<a href="' + blogUrl + '" class="blog-card-link">Read more <i class="fas fa-arrow-right"></i></a>';
       blogContainer.appendChild(card);

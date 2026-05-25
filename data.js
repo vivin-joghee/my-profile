@@ -28,6 +28,39 @@ const RESUME = {
     "Blockchain Association of Singapore (BAS)",
   ],
 
+  proofPoints: [
+    { value: "13+", label: "years in fintech infrastructure" },
+    { value: "10+", label: "ISO 20022 market migrations" },
+    { value: "AI", label: "agentic workflow automation" },
+  ],
+
+  expertise: [
+    {
+      icon: "fas fa-brain",
+      area: "Applied AI & Agent Automation",
+      summary: "Built AI-assisted workflow tooling using JIRA APIs, automation logic, and technical knowledge consolidation for Professional Services delivery.",
+      signals: ["AI Copilot", "JIRA REST APIs", "Knowledge automation"],
+    },
+    {
+      icon: "fas fa-network-wired",
+      area: "Financial Messaging Architecture",
+      summary: "Architected Swift, ISO 20022, FileAct, and API messaging integrations for high-value payment and settlement environments.",
+      signals: ["Swift AMH/SAA", "ISO 20022", "Payments infrastructure"],
+    },
+    {
+      icon: "fas fa-chart-line",
+      area: "Data Products & Machine Learning",
+      summary: "Developed Python dashboards and machine-learning models that turn customer and operational data into product and service decisions.",
+      signals: ["Python", "ML in finance", "Decision intelligence"],
+    },
+    {
+      icon: "fas fa-cloud",
+      area: "Cloud, DevOps & Resilience",
+      summary: "Led cloud-native deployments, CI/CD pipelines, Ansible provisioning, container image governance, and zero-downtime migration work.",
+      signals: ["Azure", "Docker", "Jenkins/CloudBees"],
+    },
+  ],
+
   /* ── Experience ── */
   experience: [
     {
