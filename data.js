@@ -197,7 +197,7 @@ const RESUME = {
     { title: "The Wisdom We've Lost",       author: "Thomas R. Williams", link: "https://www.ivpress.com/the-wisdom-we-ve-lost" },
     { title: "Everything is Tuberculosis",  author: "John Green", link: "https://www.johngreenbooks.com/everything-is-tuberculosis" },
     { title: "Never Split the Difference",  author: "Chris Voss", link: "https://www.harpercollins.ca/9780062471253/never-split-the-difference/" },
-    { title: "Open To Work",               author: "Phyl Terry", link: "https://www.penguinrandomhouse.com/books/733498/open-to-work-by-phyl-terry/" },
+    { title: "Open To Work",               author: "Ryan Roslansky & Aneesh Raman", link: "https://news.linkedin.com/2026/open-to-work-is-officially-open" },
     { title: "Tuesdays with Morrie",        author: "Mitch Albom", link: "https://www.mitchalbom.com/books/tuesdays-with-morrie/" },
   ],
 
