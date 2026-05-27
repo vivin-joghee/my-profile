@@ -75,9 +75,14 @@
       item.signals.forEach(function (s) {
         tagsHtml += '<span>' + s + '</span>';
       });
+      var tagBadge = item.tag ? '<span class="expertise-badge">' + item.tag + '</span>' : '';
+      var titleHtml = item.link
+        ? '<h3><a href="' + item.link + '" target="_blank" rel="noopener">' + item.area + ' <i class="fas fa-external-link-alt" style="font-size:0.6em;opacity:0.6"></i></a></h3>'
+        : '<h3>' + item.area + '</h3>';
       card.innerHTML =
         '<div class="expertise-icon"><i class="' + item.icon + '"></i></div>' +
-        '<h3>' + item.area + '</h3>' +
+        tagBadge +
+        titleHtml +
         '<p>' + item.summary + '</p>' +
         '<div class="expertise-tags">' + tagsHtml + '</div>';
       expertiseContainer.appendChild(card);
